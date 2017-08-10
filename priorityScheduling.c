@@ -61,8 +61,10 @@ pro temp;
         }
  
 int main(){
-    static pro process[6]; //used static to set default values of struct members as 0
-    int n = sizeof(process)/sizeof(process[0]); //to get the number of elements in array
+    int n;
+    printf("Enter number of process : ");
+    scanf("%d",&n);
+    pro *process = (pro*) calloc(n,sizeof(pro));
     printf("Enter process burst_times & priority : \n");
    
    

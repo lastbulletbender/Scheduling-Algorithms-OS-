@@ -1,9 +1,9 @@
 /*Round Robin Algorithm implemented by Abhrajit Chattopadhyay*/
- 
+#include<stdlib.h>
 #include<stdio.h>
-#define quantum 2
 int totalWaitingTime;
 int totalTurnAroundTime;
+int quantum;
  
  
 typedef struct process_struct{
@@ -67,14 +67,18 @@ void roundRobin(pro process[],int n){
                        
                
  
-int main(){
-    static pro process[5];
-    int n = sizeof(process)/sizeof(process[0]);
-    printf("Enter process time_lefts : \n");
+int main(){    
+    int n;
+    printf("Enter number of processes : ");
+    scanf("%d",&n);
+    pro *process = (pro*) calloc(n,sizeof(pro));//used calloc to set default values of struct members as 0
+    printf("Enter burst time : \n");
     for(int i=0;i<n;i++){
         scanf("%d",&process[i].burst_time);
         process[i].time_left = process[i].burst_time;
-    }  
+    }
+    printf("\nEnter quantum time (Time given to each process) : ");
+    scanf("%d",&quantum);  
     roundRobin(process,n);
     printf("Process\tBurstTime\tWaitingTime\tTurnAroundTime\tCompletionTime\n");
     for(int i =0;i<n;i++){

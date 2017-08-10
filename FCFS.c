@@ -1,5 +1,5 @@
 /*FCFS ALGORITHM IMPLEMENTED BY ABHRAJIT CHATTOPADHYAY*/
- 
+#include<stdlib.h> 
 #include<stdio.h>
 int totalWaitingTime;
 int totalTurnAroundTime;
@@ -44,8 +44,11 @@ void firstComeFirstServe(pro process[],int n){
         }
  
 int main(){
-    static pro process[4]; //used static to set default values of struct members as 0
-    int n = sizeof(process)/sizeof(process[0]); //to get the number of elements in array
+    int n;
+    printf("Enter number of processes : ");
+    scanf("%d",&n);
+    pro *process = (pro*) calloc(n,sizeof(pro));//used calloc to set default values of struct members as 0
+     
     printf("Enter process burst_times : \n");
    
    
